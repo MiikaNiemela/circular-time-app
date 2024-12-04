@@ -61,6 +61,14 @@ const getCenterOffset = (maxSize: number, size: number) => {
   return (maxSize - size) / 2;
 };
 
+/**
+ * MultiCircle component renders multiple Circle components within a single SVG element.
+ * Each Circle is centered within the largest Circle's dimensions.
+ *
+ * @param {MultiCircleProps} props - The properties for the MultiCircle component.
+ * @param {CircleProps[]} props.circles - An array of CircleProps to render multiple circles.
+ * @returns {JSX.Element} The rendered MultiCircle component.
+ */
 export const MultiCircle: React.FC<MultiCircleProps> = ({ circles }) => {
   const maxSize = getMaxSize(circles);
 
