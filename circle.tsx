@@ -11,6 +11,30 @@ interface CircleProps {
   slices: Slice[];
   lineWidth?: number; // Optional parameter
 }
+// TODO: make the slices 'interactive' by adding onPress events to each slice
+// Example, (just make the handle event a parameter):
+/*const InteractiveSvg = () => {
+  const handlePress = () => {
+    Alert.alert('Circle Pressed!');
+  };
+
+  return (
+    <View>
+      <Svg height="100" width="100">
+        <Circle
+          cx="50"
+          cy="50"
+          r="40"
+          stroke="black"
+          strokeWidth="2.5"
+          fill="red"
+          onPress={handlePress}
+        />
+      </Svg>
+    </View>
+  );
+};
+*/
 
 export const Circle: React.FC<CircleProps> = ({ size, slices, lineWidth = 50 }) => {
   const radius = size / 2;
