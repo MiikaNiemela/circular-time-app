@@ -1,7 +1,5 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
+ * Simple one view app to show days and weeks in a circle.
  * @format
  */
 
