@@ -2,7 +2,7 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 
 # Getting Started
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+> **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
 ## Step 1: Start the Metro Server
 
@@ -77,3 +77,41 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+# File structure
+
+The desired out come would be
+
+```
+rnTimer/
+├── android/
+├── ios/
+├── src/
+│   ├── components/
+│   │   ├── Circle/
+│   │   │   ├── Circle.tsx
+│   │   │   ├── MultiCircle.tsx
+│   │   │   └── Slice.ts
+│   │   ├── InteractiveSvg/
+│   │   │   └── InteractiveSvg.tsx
+│   │   └── Calendar/
+│   │       ├── CalendarDataProvider.tsx
+│   │       ├── GoogleCalendarService.ts
+│   │       ├── OutlookCalendarService.ts
+│   │       ├── LocalStorageService.ts
+│   │       └── CalendarEvent.ts
+│   ├── views/
+│   │   ├── TimelineView.tsx
+│   │   └── SettingsView.tsx
+│   ├── App.tsx
+│   ├── index.tsx
+│   └── types/
+│       └── index.ts
+├── meta-instructions/
+├── docs/
+├── .eslintrc.js
+├── .prettierrc.js
+├── tsconfig.json
+├── package.json
+└── README.md
+```

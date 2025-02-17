@@ -1,13 +1,4 @@
 {
-    "github.copilot.enable": {
-        "markdown": true
-    },
-    "github.copilot.chat.codeGeneration.instructions": [
-        {
-            "text": "In Typescript, always use ESLint extension to format the code. It will help you to write clean code.",
-        }
-    ],
-    "chat.promptFiles": {
-        "meta-instructions": true
-    },
+    "github.copilot.chat.followUps": "always",
+    "github.copilot.chat.codeGeneration.useInstructionFiles": true,
 }
