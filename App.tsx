@@ -4,58 +4,50 @@
  */
 
 import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {TimelineScreen} from './src/screens/TimelineScreen';
+import {SettingsScreen} from './src/screens/SettingsScreen';
+import {RootStackParamList} from './src/navigation/types';
+import {Text, TouchableOpacity} from 'react-native';
 
-import {
-  Colors,
-  Header,
-} from 'react-native/Libraries/NewAppScreen';
-import { MultiCircle, Slice } from './circle';
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
-const backgroundStyle = (isDarkMode: boolean) => ({
-  backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-});
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  const monthSlices: Slice[] = Array.from({ length: 12 }, (_, index) => {
-    const colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];
-    return { color: colors[index % colors.length], degrees: 30 };
-  });
-  const weekSlices: Slice[] = Array.from({ length: 52 }, (_, index) => {
-    const colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];
-    return { color: colors[index % colors.length], degrees: 360 / 52 };
-  });
-  const viewStyle = {
-    backgroundColor: isDarkMode ? Colors.black : Colors.white,
-  };
-
+function SettingsButton(navigation: any): React.ReactNode {
   return (
-    <SafeAreaView style={backgroundStyle(isDarkMode)}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle(isDarkMode).backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle(isDarkMode)}>
-        <Header />
-        <View style={viewStyle}>
-          <MultiCircle circles={[
-            { size: 400, slices: monthSlices },
-            { size: 300, slices: weekSlices, lineWidth: 30 },
-          ]} />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <HeaderButton
+      onPress={() => navigation.navigate('Settings')}
+      title='Settings'
+    />
+  );
+}
+
+const HeaderButtonTOStyle = {marginRight: 15};
+const HeaderButtonStyle = {color: '#007AFF', fontSize: 16};
+// Simple header button component
+const HeaderButton: React.FC<{onPress: () => void; title: string}> = ({
+  onPress,
+  title,
+}) => (
+  <TouchableOpacity onPress={onPress} style={HeaderButtonTOStyle}>
+    <Text style={HeaderButtonStyle}>{title}</Text>
+  </TouchableOpacity>
+);
+function App(): React.JSX.Element {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='Timeline'>
+        <Stack.Screen
+          name='Timeline'
+          component={TimelineScreen}
+          options={({navigation}) => ({
+            headerRight: () => SettingsButton(navigation),
+          })}
+        />
+        <Stack.Screen name='Settings' component={SettingsScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
 export default App;
-
